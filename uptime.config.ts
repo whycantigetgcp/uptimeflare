@@ -1,11 +1,8 @@
 const pageConfig = {
-  // Title for your status page
-  title: "hxd Status Page",
-  // Links shown at the header of your status page, could set `highlight` to `true`
+  title: "My Status Page",
   links: [
-    { link: 'https://vwo50.club', label: 'Blog' },
-    { link: 'https://u1s1.one', label: 'Nav Site' },
-    { link: 'https://md.u1s1.one/', label: 'markdown', highlight: true },
+    { link: 'https://example.com', label: 'My Website' },
+    { link: 'mailto:contact@example.com', label: 'Contact', highlight: true },
   ],
 }
 
@@ -13,62 +10,46 @@ const workerConfig = {
   kvWriteCooldownMinutes: 3,
   monitors: [
     {
-      id: 'google_monitor',
-      name: 'My Blog Monitor',
+      id: 'gemini_vercel_monitor',
+      name: 'Gemini Vercel Monitor',
       method: 'GET',
-      target: 'https://vwo50.club',
-        tooltip: 'This is a tooltip for this monitor',
-  // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
-  statusPageLink: 'https://example.com',
+      target: 'https://gemini-vercel-tau.vercel.app',
+      tooltip: 'Monitoring Gemini Vercel app',
+      statusPageLink: 'https://gemini-vercel-tau.vercel.app',
+      expectedCodes: [404],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
     },
-
- {
-      id: 'google_monitor',
-      name: 'My Nav Monitor',
-      method: 'GET',
-      target: 'https://u1s1.one',
-     tooltip: 'This is a tooltip for this monitor',
-  // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
-  statusPageLink: 'https://example.com',
-    },
-
     {
-      id: 'ssh_monitor',
-      name: 'Oracle Monitor',
-      method: 'TCP_PING',
-      target: 'X.X.X.X:22',
-        tooltip: 'This is a tooltip for this monitor',
-  // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
-  statusPageLink: 'https://example.com',
+      id: 'uptimeflare_pages_monitor',
+      name: 'Uptimeflare Pages Monitor',
+      method: 'GET',
+      target: 'https://uptimeflare-1tb.pages.dev',
+      tooltip: 'Monitoring Uptimeflare Pages app',
+      statusPageLink: 'https://uptimeflare-1tb.pages.dev',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
     },
   ],
+  notification: {
+    appriseApiServer: "https://apprise.example.com/notify",
+    recipientUrl: "tgram://bottoken/ChatID",
+    timeZone: "UTC",
+    gracePeriod: 5,
+  },
   callbacks: {
-    onStatusChange: async (
-      env: any,
-      monitor: any,
-      isUp: boolean,
-      timeIncidentStart: number,
-      timeNow: number,
-      reason: string,
-    ) => {
-      // This callback will be called when there's a status change for any monitor
-      // Write any Typescript code here
-
-      // This will not follow the grace period settings and will be called immediately when the status changes
-      // You need to handle the grace period manually if you want to implement it
+    onStatusChange: async (env, monitor, isUp, timeIncidentStart, timeNow, reason) => {
+      console.log(`Status changed for ${monitor.name}: ${isUp ? 'UP' : 'DOWN'}`);
     },
-    onIncident: async (
-      env: any,
-      monitor: any,
-      timeIncidentStart: number,
-      timeNow: number,
-      reason: string,
-    ) => {
-      // This callback will be called EVERY 1 MINTUE if there's an on-going incident for any monitor
-      // Write any Typescript code here
+    onIncident: async (env, monitor, timeIncidentStart, timeNow, reason) => {
+      console.log(`Ongoing incident for ${monitor.name}`);
     },
   },
 }
 
-// Don't forget this, otherwise compilation fails.
 export { pageConfig, workerConfig }
