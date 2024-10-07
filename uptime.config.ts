@@ -35,7 +35,7 @@ const workerConfig = {
       name: 'UptimeFlare Pages Monitor',
       method: 'GET',
       target: 'https://uptimeflare-1tb.pages.dev',
-      tooltip: 'Monitoring UptimeFlare Pages site',
+      tooltip: 'UptimeFlare',
       statusPageLink: 'https://uptimeflare-1tb.pages.dev',
       expectedCodes: [200],
       timeout: 10000,
