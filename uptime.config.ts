@@ -11,13 +11,23 @@ const workerConfig = {
   kvWriteCooldownMinutes: 3,
   monitors: [
     {
-      id: 'gemini_vercel_monitor',
-      name: 'Gemini Vercel Monitor',
+      id: 'gemini',
+      name: 'gemini.ulaara.xyz',
       method: 'GET',
       target: 'https://gemini-vercel-tau.vercel.app',
-      tooltip: 'Monitoring Gemini Vercel site',
+      tooltip: 'Gemini',
       statusPageLink: 'https://gemini-vercel-tau.vercel.app',
       expectedCodes: [404],
+      timeout: 10000,
+    },
+   {
+      id: 'gemini-proxy',
+      name: 'gemini-proxy.ulaara.xyz',
+      method: 'GET',
+      target: 'https://gemini-proxy.ulaara.xyz',
+      tooltip: 'Gemini-Proxy',
+      statusPageLink: 'https://gemini-proxy.ulaara.xyz',
+      expectedCodes: [405],
       timeout: 10000,
     },
     {
