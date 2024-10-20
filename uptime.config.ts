@@ -217,7 +217,7 @@ const workerConfig = {
       target: 'https://chat.588686.xyz/',
       tooltip: 'openai-proxy-cloudflare',
       statusPageLink: 'https://chat.588686.xyz/',
-      expectedCodes: [200],
+      expectedCodes: [421],
       timeout: 10000,
     },
     {
