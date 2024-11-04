@@ -106,7 +106,7 @@ const workerConfig = {
       method: 'GET',
       target: 'https://chatapi.usy.me/home',
       tooltip: 'chatapi-render2',
-      statusPageLink: 'https://chatapi.ulaara.xyz/home',
+      statusPageLink: 'https://chatapi.usy.me/home',
       expectedCodes: [200],
       timeout: 10000,
     },
