@@ -131,6 +131,16 @@ const workerConfig = {
       timeout: 10000,
     },
     {
+      id: 'maxapi_render',
+      name: 'maxapi-render(max.dwe.me)',
+      method: 'GET',
+      target: 'https://max-api-latest-txoa.onrender.com/',
+      tooltip: 'maxapi-render(max.dwe.me)',
+      statusPageLink: 'https://max-api-latest-txoa.onrender.com/',
+      expectedCodes: [200],
+      timeout: 10000,
+    },
+    {
       id: 'duck2api',
       name: 'duck2api',
       method: 'GET',
