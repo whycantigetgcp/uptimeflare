@@ -161,6 +161,16 @@ const workerConfig = {
       timeout: 10000,
     },
     {
+      id: 'openwebui_huggingface2',
+      name: 'openwebui-huggingface2',
+      method: 'GET',
+      target: 'https://openwebui.shiyue.im/',
+      tooltip: 'openwebui-huggingface2',
+      statusPageLink: 'https://openwebui.shiyue.im/',
+      expectedCodes: [200],
+      timeout: 10000,
+    },
+    {
       id: 'fastgpt_huggingface',
       name: 'fastgpt-huggingface',
       method: 'GET',
