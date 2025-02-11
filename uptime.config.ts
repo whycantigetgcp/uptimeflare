@@ -221,6 +221,16 @@ const workerConfig = {
       timeout: 10000,
     },
     {
+      id: 'lobechat_vercel',
+      name: 'lobechat_vercel',
+      method: 'GET',
+      target: 'https://lobe.ulaara.xyz/',
+      tooltip: 'lobechat_vercel',
+      statusPageLink: 'https://lobe.ulaara.xyz/',
+      expectedCodes: [200],
+      timeout: 10000,
+    },
+    {
       id: 'nextweb_vercel',
       name: 'nextweb-vercel',
       method: 'GET',
